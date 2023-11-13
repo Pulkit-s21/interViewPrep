@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext } from "react"
+import { ProductCard } from "./components/ProductCard"
+import { Pagination } from "./components/Pagination"
+export const Context = createContext()
 
 function App() {
   const [products, setProducts] = useState([])
@@ -18,65 +21,11 @@ function App() {
   }, [page])
 
   return (
-    <>
-      <div className="grid grid-cols-3 gap-8 p-8">
-        {/* {products?.slice(page*10 - 10, page*10).map((prod) => { This is totally frontend solution which is kinda bad as our website needs to call all of the items even when we only need the first few  */}
+    <Context.Provider value={{ products, totalPages, page, setPage }}>
+      <ProductCard />
 
-        {products?.map((prod) => {
-          return (
-            <div className="flex flex-col text-center gap-4" key={prod.id}>
-              <img
-                className="h-80 object-cover"
-                src={prod.thumbnail}
-                alt={prod.tite}
-              />
-              {prod.title}
-            </div>
-          )
-        })}
-      </div>
-      {products.length > 0 && (
-        <div className="flex gap-1 justify-center">
-          <span
-            onClick={() => {
-              {
-                page > 1 && setPage(page - 1)
-              }
-            }}
-            className={` ${
-              page === 1 && "hidden"
-            } px-4 py-2 border-2 border-gray-200 cursor-pointer`}
-          >
-            {" "}
-            ◀{" "}
-          </span>
-          {[...Array(totalPages)].map((_, i) => (
-            <span
-              onClick={() => setPage(i + 1)}
-              className={` ${
-                page === i + 1 && "bg-blue-400"
-              } px-4 py-2 border-2 border-gray-200 cursor-pointer`}
-              key={i}
-            >
-              {i + 1}
-            </span>
-          ))}
-          <span
-            onClick={() => {
-              {
-                page < totalPages && setPage(page + 1)
-              }
-            }}
-            className={` ${
-              page === 10 && "hidden"
-            } px-4 py-2 border-2 border-gray-200 cursor-pointer`}
-          >
-            {" "}
-            ▶{" "}
-          </span>
-        </div>
-      )}
-    </>
+      <Pagination />
+    </Context.Provider>
   )
 }
 
