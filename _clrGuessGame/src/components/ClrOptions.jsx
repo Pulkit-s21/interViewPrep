@@ -34,15 +34,16 @@ export const ClrOptions = () => {
           </button>
         ))}
       </div>
-        <button
-          className={`${skipCounter > 2 && "hidden"}`}
-          onClick={() => {
-            setSkipCounter((prev) => prev + 1)
-            generateColors()
-          }}
-        >
-          Skip
-        </button>
+      <button
+        disabled={skipCounter > 2}
+        className="disabled:opacity-50 disabled:cursor-not-allowed"
+        onClick={() => {
+          setSkipCounter((prev) => prev + 1)
+          generateColors()
+        }}
+      >
+        Skip
+      </button>
     </>
   )
 }
