@@ -38,6 +38,7 @@ function App() {
   const [answers, setAnswers] = useState([])
 
   let [wrongCounter, setWrongCounter] = useState(0)
+  let [skipCounter, setSkipCounter] = useState(0)
 
   const generateColors = () => {
     const actualAnswer = getRandomColor()
@@ -62,6 +63,8 @@ function App() {
         setIsWrongSelection,
         setWrongCounter,
         generateColors,
+        skipCounter,
+        setSkipCounter,
       }}
     >
       <div className="flex flex-col items-center gap-8">
@@ -70,8 +73,14 @@ function App() {
             <ColorBox />
             <ClrOptions />
             {isWrongSelection}
-            <p className="font-bold text-lg">
-              You have {3 - wrongCounter} chances left
+            <p className="text-lg">
+              <span className="font-bold text-xl"> {3 - skipCounter} </span>
+              skips left
+            </p>
+            <p className="text-lg">
+              You have
+              <span className="font-bold text-xl"> {3 - wrongCounter} </span>
+              chances left
             </p>
           </>
         ) : (

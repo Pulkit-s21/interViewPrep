@@ -8,10 +8,12 @@ export const ClrOptions = () => {
     setIsWrongSelection,
     setWrongCounter,
     generateColors,
+    skipCounter,
+    setSkipCounter,
   } = useContext(Context)
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {answers.map((ans) => (
           <button
             className="border-2 border-gray-200 hover:border-blue-300"
@@ -28,10 +30,19 @@ export const ClrOptions = () => {
             }}
             key={ans}
           >
-            {ans}
+            <p className="font-semibold text-lg">{ans}</p>
           </button>
         ))}
       </div>
+        <button
+          className={`${skipCounter > 2 && "hidden"}`}
+          onClick={() => {
+            setSkipCounter((prev) => prev + 1)
+            generateColors()
+          }}
+        >
+          Skip
+        </button>
     </>
   )
 }
