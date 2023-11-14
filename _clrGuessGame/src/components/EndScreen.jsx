@@ -2,7 +2,8 @@ import { useContext } from "react"
 import { Context } from "../App"
 
 export const EndScreen = () => {
-  const { setWrongCounter, setSkipCounter, generateColors } = useContext(Context)
+  const { setWrongCounter, setSkipCounter, generateColors } =
+    useContext(Context)
   return (
     <>
       <p className="text-center font-bold text-lg lg:text-3xl">
