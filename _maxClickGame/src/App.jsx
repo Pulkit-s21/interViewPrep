@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     if (timeLeft <= 0) return
-    const timeOut = setTimeout(() => {
+    const timeOut = setInterval(() => {
       setTimeLeft(timeLeft - 1)
     }, 1000)
 
