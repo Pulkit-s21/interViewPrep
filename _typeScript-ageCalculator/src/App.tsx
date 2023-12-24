@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import Arrow from "./assets/Arrow.svg"
 
 function App() {
-  const [counter, setCounter] = useState<number>(0)
   const [date, setDate] = useState<string>("")
   const [month, setMonth] = useState<string>("")
   const [year, setYear] = useState<string>("")
+  const [counter, setCounter] = useState<number>(0)
   const [dayResult, setDayResult] = useState<number>(0)
   const [monthResult, setMonthResult] = useState<number>(0)
   const [yearResult, setYearResult] = useState<number>(0)
@@ -42,9 +42,9 @@ function App() {
         <div className="flex flex-col text-left">
           <p className=" text-black">Days</p>
           <input
-            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black"
+            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black placeholder:text-gray-300"
             type="number"
-            placeholder="Date"
+            placeholder="DD"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             min="1"
@@ -55,9 +55,9 @@ function App() {
         <div className="flex flex-col text-left">
           <p className=" text-black">Month</p>
           <input
-            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black"
+            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black placeholder:text-gray-300"
             type="number"
-            placeholder="Month"
+            placeholder="MM"
             value={month}
             onChange={(e) => setMonth(e.target.value)}
             min="1"
@@ -68,9 +68,9 @@ function App() {
         <div className="flex flex-col text-left">
           <p className=" text-black">Year</p>
           <input
-            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black"
+            className=" w-24 font-extrabold text-black p-2 bg-transparent border-[.5px] border-black placeholder:text-gray-300"
             type="number"
-            placeholder="Year"
+            placeholder="YYYY"
             value={year}
             min="1900"
             max={new Date().getFullYear()}
