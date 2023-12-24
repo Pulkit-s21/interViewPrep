@@ -6,29 +6,29 @@ function App() {
   const [date, setDate] = useState<string>("")
   const [month, setMonth] = useState<string>("")
   const [year, setYear] = useState<string>("")
-  const [dayResult, setDayResult] = useState<number>()
-  const [monthResult, setMonthResult] = useState<number>()
-  const [yearResult, setYearResult] = useState<number>()
-
-  const getDays = function (year: number, month: number) {
-    return new Date(year, month, 0).getDate()
-  }
+  const [dayResult, setDayResult] = useState<number>(0)
+  const [monthResult, setMonthResult] = useState<number>(0)
+  const [yearResult, setYearResult] = useState<number>(0)
 
   const calculateAge = () => {
     const today = new Date()
-    const currentDate = today.getDate()
     const currentYear = today.getFullYear()
-    const bmonth = parseFloat(month)
-    const daysInMonth = getDays(currentYear, bmonth)
-    if (currentYear < parseFloat(year)){
+
+    if (currentYear < parseFloat(year)) {
       alert("Please enter a valid DOB!!")
       setDate("")
       setMonth("")
       setYear("")
     } else {
-      setDayResult(currentDate + daysInMonth * bmonth + parseFloat(date))
-      setMonthResult(12 - bmonth)
-      setYearResult(currentYear - parseFloat(year))
+      // making a date with the info entered by the user
+      const birthDay = new Date(
+        parseInt(year),
+        parseInt(month) - 1, // need -1 bcz the months start from 0..so 12 becomes Jan again
+        parseInt(date)
+      )
+      setYearResult(today.getFullYear() - birthDay.getFullYear())
+      setMonthResult(today.getMonth() - birthDay.getMonth())
+      setDayResult(today.getDate() - birthDay.getDate())
     }
   }
   useEffect(() => {
@@ -83,7 +83,7 @@ function App() {
       {/* image */}
       <div className="flex flex-col items-end">
         <img
-          className=" bg-purple-600 rounded-full p-2 w-10"
+          className="bg-purple-600 cursor-pointer hover:opacity-70 rounded-full p-2 w-10 rotate-180 hover:rotate-0 duration-300 transition-all"
           src={Arrow}
           alt="Arrow"
           onClick={() => {
