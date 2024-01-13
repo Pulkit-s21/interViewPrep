@@ -58,7 +58,7 @@ function App() {
         generatePassword,
       }}
     >
-      <div className="flex items-center flex-col gap-4 bg-white px-6 py-4">
+      <div className="flex items-center flex-col gap-6 rounded-xl bg-black text-white p-8">
         <Title />
         <Customizer />
         <Options />
