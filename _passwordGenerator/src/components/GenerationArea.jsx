@@ -26,12 +26,13 @@ export const GenerationArea = () => {
       )
     }
 
-    btnRef.current?.addEventListener("mousemove", handleMouseMove)
-    btnRef.current?.addEventListener("mouseleave", handleMouseLeave)
+    const btnCurrent = btnRef.current
+    btnCurrent?.addEventListener("mousemove", handleMouseMove)
+    btnCurrent?.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
-      btnRef.current?.removeEventListener("mousemove", handleMouseMove)
-      btnRef.current?.removeEventListener("mouseleave", handleMouseLeave)
+      btnCurrent?.removeEventListener("mousemove", handleMouseMove)
+      btnCurrent?.removeEventListener("mouseleave", handleMouseLeave)
     }
   })
 
