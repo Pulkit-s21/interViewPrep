@@ -26,9 +26,7 @@ function App() {
       {list.map((item, idx) => {
         return (
           <ul key={idx} className="text-center bg-transparent">
-            <>
-              <li className="flex-1">{item}</li>
-            </>
+            <li className="flex-1">{item}</li>
           </ul>
         )
       })}
