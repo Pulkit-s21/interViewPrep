@@ -12,7 +12,7 @@ export const Customizer = () => {
         value={length}
         onChange={(e) => setLength(e.target.value)}
         max={12} 
-        min={4}
+        min={4} 
       />
     </div>
   )
